@@ -1,0 +1,11 @@
+# Properties file for Simplicity Studio metadata
+id=com.silabs.sdk.training_ds_silabs
+
+version=1.0.0
+
+label=TRAINING DS SILABS
+description=Training DS Silabs extension for Gecko SDK Suite
+
+prop.subLabel=Silicon\\ Labs\\ TRAINING DS SILABS \\1.0.0
+
+prop.file.templatesFile=training_ds_silabs.xml

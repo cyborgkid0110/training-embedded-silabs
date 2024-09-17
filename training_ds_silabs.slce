@@ -1,0 +1,11 @@
+id: training_ds_silabs
+version: 1.0.0
+description: "Training DS Silabs extension for Gecko SDK Suite"
+label: "TRAINING DS SILABS"
+sdk:
+  id: gecko_sdk
+  version: 4.4.2
+component_path:
+  - path: components
+  # Project
+  - path: components/

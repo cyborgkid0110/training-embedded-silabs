@@ -1,0 +1,52 @@
+project_name: two_leds_with_buttons
+package: training_ds_silabs
+quality: production
+label: Two Leds with Buttons
+description: >
+  This project shows interactions between buttons and LEDs with I/O stream for show result on console.
+category: Example|Two Leds with Buttons
+
+sdk: {id: gecko_sdk, version: 4.4.2}
+
+sdk_extension:
+- {id: training_ds_silabs, version: 1.0.0} 
+
+source:
+- {path: app.c}
+- {path: main.c}
+- {path: app_iostream_usart.c}
+- {path: button_component.c}
+
+include:
+- path: ./
+  file_list:
+  - {path: app.h}
+  - {path: app_iostream_usart.h}
+  - {path: button_component.h}
+  - {path: debug.h}
+
+component:
+- {id: sl_system}
+- {id: clock_manager}
+- {id: device_init}
+- {id: iostream_retarget_stdio}
+- instance: [vcom]
+  id: iostream_usart
+- instance: [button0, button1]
+  id: simple_button
+- {id: udelay}
+
+define:
+- {name: DEBUG_EFM}
+
+configuration:
+- {name: SL_BOARD_ENABLE_VCOM, value: 'SL_SIMPLE_BUTTON_MODE_INTERRUPT'}
+- {name: SL_SIMPLE_BUTTON_BUTTON0_MODE, value: 'SL_SIMPLE_BUTTON_MODE_INTERRUPT'}
+- {name: SL_SIMPLE_BUTTON_BUTTON1_MODE, value: 'SL_SIMPLE_BUTTON_MODE_INTERRUPT'}
+- {name: SL_SIMPLE_BUTTON_BUTTON0_PORT, value: 'gpioPortD'}
+- {name: SL_SIMPLE_BUTTON_BUTTON1_PORT, value: 'gpioPortD'}
+- {name: SL_SIMPLE_BUTTON_BUTTON0_PIN, value: '2'}
+- {name: SL_SIMPLE_BUTTON_BUTTON1_PIN, value: '3'}
+- {name: SL_IOSTREAM_USART_VCOM_CONVERT_BY_DEFAULT_LF_TO_CRLF, value: '1'}
+- {name: SL_IOSTREAM_USART_VCOM_RX_BUFFER_SIZE, value: '80'}
+

@@ -1,0 +1,45 @@
+project_name: dynamic_allocate_function
+package: training_ds_silabs
+quality: production
+label: Dynamic Allocate Function
+description: >
+  This is a assignment on week 1 require dynamic allocate pointer through function.
+category: Example|Dynamic Allocate Function
+
+sdk: {id: gecko_sdk, version: 4.4.2}
+
+sdk_extension:
+  - {id: training_ds_silabs, version: 1.0.0}
+
+component:
+  - id: sl_system
+  - id: device_init
+  - id: device_init_hfrco
+  - id: emlib_wdog
+  - id: emlib_gpcrc
+  - id: uartdrv_core
+  - id: emlib_timer
+  - id: emlib_letimer
+  - id: iostream_usart
+    instance: [vcom]
+  - id: iostream_retarget_stdio
+  - id: unity
+    from: training_ds_silabs 
+  - id: dynamic_allocate_function
+    from: training_ds_silabs 
+
+include:
+  - path: ./
+    file_list:
+      - path: app.h
+source:
+  - path: app.c
+  - path: main.c
+
+configuration:
+  - name: SL_BOARD_ENABLE_VCOM
+    value: 1
+  - name: SL_IOSTREAM_USART_VCOM_CONVERT_BY_DEFAULT_LF_TO_CRLF
+    value: 1
+  - name: SL_IOSTREAM_USART_VCOM_RX_BUFFER_SIZE
+    value: 80

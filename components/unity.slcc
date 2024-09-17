@@ -1,0 +1,21 @@
+package: training_ds_silabs
+description: Unit test framework unity
+label: UNITY FRAMEWORK UNIT TEST
+quality: production
+id: unity
+category: UNIT TEST
+provides:
+  - name: "unity"
+include:
+  - path: ./third_party/Unity/src/
+    file_list:
+      - path: unity_internals.h
+      - path: unity.h
+  - path: ./src/unit_test/inc/
+    file_list:
+      - path: unit_test.h
+source:
+  - path: ./third_party/Unity/src/unity.c
+  - path: ./src/unit_test/src/unit_test.c
+ui_hints:
+  visibility: never

@@ -1,0 +1,14 @@
+package: training_ds_silabs
+description: This is a assignment on week 1 require dynamic allocate pointer through function
+label: Dynamic Allocate Function
+quality: production
+id: dynamic_allocate_function
+category: DYNAMIC ALLOCATE FUNCTION
+provides:
+  - name: "dynamic_allocate_function"
+include:
+  - path: ./src/dynamic_allocate_function/inc/
+    file_list:
+      - path: dynamic_allocate_function.h
+source:
+  - path: ./src/dynamic_allocate_function/src/dynamic_allocate_function.c

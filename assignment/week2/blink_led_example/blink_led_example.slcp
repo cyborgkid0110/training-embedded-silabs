@@ -1,0 +1,46 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: blink_led_example
+label: blink_led_example
+description: >
+  This project shows how to add blink LED example project to sdk.
+category: Example|Blink LEDs example
+package: training_ds_silabs
+quality: production
+
+source:
+- {path: app.c}
+- {path: main.c}
+- {path: blink.c}
+
+include:
+- path: ./
+  file_list:
+  - {path: app.h}
+  - {path: blink.h}
+sdk: {id: gecko_sdk, version: 4.4.2}
+
+sdk_extension:
+  - {id: training_ds_silabs, version: 1.0.0}
+
+component:
+- {id: device_init}
+- instance: [led0, led1]
+  id: simple_led
+- {id: sl_system}
+- {id: sleeptimer}
+- {id: double_linked_list, from: training_ds_silabs}
+
+configuration:
+- {name: SL_SIMPLE_LED_LED0_POLARITY, value: "SL_SIMPLE_LED_POLARITY_ACTIVE_HIGH"}
+- {name: SL_SIMPLE_LED_LED1_POLARITY, value: "SL_SIMPLE_LED_POLARITY_ACTIVE_HIGH"}
+- {name: SL_SIMPLE_LED_LED0_PORT, value: "gpioPortB"}
+- {name: SL_SIMPLE_LED_LED1_PORT, value: "gpioPortB"}
+- {name: SL_SIMPLE_LED_LED0_PIN, value: "0"}
+- {name: SL_SIMPLE_LED_LED1_PIN, value: "1"}
+
+define:
+- {name: DEBUG_EFM}
+#ui_hints:
+#  highlight:
+#  - {path: readme.md, focus: true}
+
