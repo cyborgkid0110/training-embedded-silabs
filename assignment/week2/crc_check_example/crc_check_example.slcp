@@ -31,6 +31,19 @@ component:
   id: iostream_usart
 - {id: crc_check_component, from: training_ds_silabs}
 
+template_contribution:
+- name: crc_test_section
+  value: 1
+
+toolchain_settings:
+  - option: linkerfile
+    value: autogen/linkerfile_crc.ld
+    condition: [device_cortexm]
+    unless: [memory_layout_legacy_hal]
+  - option: linkerfile
+    value: autogen/linkerfile_crc_base.ld
+    condition: [device_cortexm, memory_layout_legacy_hal]
+
 configuration:
 - {name: SL_BOARD_ENABLE_VCOM, value: '1'}
 - {name: SL_IOSTREAM_USART_VCOM_CONVERT_BY_DEFAULT_LF_TO_CRLF, value: '1'}

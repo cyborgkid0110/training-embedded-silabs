@@ -18,3 +18,10 @@ include:
 source:
   - path: ./src/crc_check_component/src/crc_hardware_check.c
   - path: ./src/crc_check_component/src/crc_software_check.c
+
+template_file:
+  - path: ./src/toolchain/linkerfile_crc/linkerfile_crc.ld.jinja
+    condition: [device_cortexm]
+    unless: [memory_layout_legacy_hal]
+  - path: ./src/toolchain/linkerfile_crc/linkerfile_crc_base.ld.jinja
+    condition: [device_cortexm, memory_layout_legacy_hal]

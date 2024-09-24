@@ -45,12 +45,14 @@
 
 #endif
 
+const uint8_t crc_test_flash_check[CRC_TEST_FLASH_LENGTH] __attribute__((section(".crc_test_section"))) = FLASH_DATA;
 const uint8_t crc_test_flash[CRC_TEST_FLASH_LENGTH] __attribute__((section(".crc_test_section"))) = FLASH_DATA;
 
 void app_init(void)
 {
-  crc_hardware_check(&crc_test_flash, CRC_TEST_FLASH_LENGTH);
-  crc_software_check(&crc_test_flash, CRC_TEST_FLASH_LENGTH);
+  extern uint8_t __crc_test_section_start__;
+  crc_hardware_check(&__crc_test_section_start__, CRC_TEST_FLASH_LENGTH);
+  crc_software_check(&__crc_test_section_start__, CRC_TEST_FLASH_LENGTH);
 }
 
 /***************************************************************************//**
