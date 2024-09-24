@@ -9,6 +9,6 @@ provides:
 include:
   - path: ./src/double_linked_list/inc/
     file_list:
-      - path: holidays_dma_component.h
+      - path: dll_dma_component.h
 source:
-  - path: ./src/double_linked_list/src/holidays_dma_component.c
+  - path: ./src/double_linked_list/src/dll_dma_component.c

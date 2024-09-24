@@ -1,0 +1,45 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: double_linked_list_example
+label: double_linked_list_example
+description: >
+  This example project shows how to do dynamic memory allocation with double linked list.
+category: Example|Double linked list
+package: training_ds_silabs
+quality: production
+
+source:
+- {path: app.c}
+- {path: main.c}
+- {path: app_iostream_usart.c}
+- {path: dll_component.c}
+
+include:
+- path: ./
+  file_list:
+  - {path: app.h}
+  - {path: app_iostream_usart.h}
+  - {path: dll_component.h}
+sdk: {id: gecko_sdk, version: 4.4.2}
+
+sdk_extension:
+  - {id: training_ds_silabs, version: 1.0.0}
+
+component:
+- {id: device_init}
+- {id: sl_system}
+- {id: iostream_retarget_stdio}
+- instance: [vcom]
+  id: iostream_usart
+- {id: double_linked_list, from: training_ds_silabs}
+
+configuration:
+- {name: SL_BOARD_ENABLE_VCOM, value: '1'}
+- {name: SL_IOSTREAM_USART_VCOM_CONVERT_BY_DEFAULT_LF_TO_CRLF, value: '1'}
+- {name: SL_IOSTREAM_USART_VCOM_RX_BUFFER_SIZE, value: '80'}
+ui_hints:
+  highlight:
+  - {path: readme.md, focus: true}
+
+define:
+- {name: DEBUG_EFM}
+

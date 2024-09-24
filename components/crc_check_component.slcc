@@ -1,0 +1,20 @@
+package: training_ds_silabs
+description: This component is used for testing a flash section by CRC.
+label: CRC Check Component
+quality: production
+id: crc_check_component
+category: CRC Check Component
+config_file:
+  - path: ./src/crc_check_component/config/crc_check_config.h
+provides:
+  - name: "crc_check_component"
+requires:
+  - name: emlib_gpcrc
+include:
+  - path: ./src/crc_check_component/inc/
+    file_list:
+      - path: crc_hardware_check.h
+      - path: crc_software_check.h
+source:
+  - path: ./src/crc_check_component/src/crc_hardware_check.c
+  - path: ./src/crc_check_component/src/crc_software_check.c
